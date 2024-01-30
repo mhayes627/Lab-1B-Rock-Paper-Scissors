@@ -17,16 +17,16 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/welcome_text"
+            android:id="@+id/welcomeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/welcome_text" />
 
         <TextView
-            android:id="@+id/choose_text"
+            android:id="@+id/chooseText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="TextView" />
+            android:text="@string/choose_text" />
 
         <Button
             android:id="@+id/rock_button"
@@ -47,25 +47,25 @@
             android:text="Button" />
 
         <TextView
-            android:id="@+id/score_text"
+            android:id="@+id/scoreText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/pweapon_text"
+            android:id="@+id/pweaponText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/cweapon_text"
+            android:id="@+id/cweaponText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
 
         <TextView
-            android:id="@+id/win_text"
+            android:id="@+id/winText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="TextView" />
