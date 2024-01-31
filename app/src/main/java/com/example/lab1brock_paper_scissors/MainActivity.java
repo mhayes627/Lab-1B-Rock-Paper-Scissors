@@ -51,16 +51,15 @@ public class MainActivity extends AppCompatActivity {
                 if (comWeapon.equals(Weapon.SCISSORS)){
                     wt.setText(getResources().getString(R.string.player_win, rockWin));
                     playerScore++;
-                    updateScore();
                 }
                 else if (comWeapon.equals(Weapon.PAPER)){
                     wt.setText(getResources().getString(R.string.com_win, paperWin));
                     comScore++;
-                    updateScore();
                 }
                 else {
                     wt.setText(getResources().getString(R.string.tie_text));
                 }
+                updateScore();
             }
         });
         binding.paperButton.setOnClickListener(new View.OnClickListener() {
@@ -72,16 +71,15 @@ public class MainActivity extends AppCompatActivity {
                 if (comWeapon.equals(Weapon.SCISSORS)){
                     wt.setText(getResources().getString(R.string.com_win, scissorsWin));
                     comScore++;
-                    updateScore();
                 }
                 else if (comWeapon.equals(Weapon.ROCK)){
                     wt.setText(getResources().getString(R.string.player_win, paperWin));
                     playerScore++;
-                    updateScore();
                 }
                 else {
                     wt.setText(getResources().getString(R.string.tie_text));
                 }
+                updateScore();
             }
         });
         binding.scissorsButton.setOnClickListener(new View.OnClickListener() {
@@ -93,20 +91,17 @@ public class MainActivity extends AppCompatActivity {
                 if (comWeapon.equals(Weapon.ROCK)){
                     wt.setText(getResources().getString(R.string.com_win, rockWin));
                     comScore++;
-                    updateScore();
                 }
                 else if (comWeapon.equals(Weapon.PAPER)){
                     wt.setText(getResources().getString(R.string.player_win, scissorsWin));
                     playerScore++;
-                    updateScore();
                 }
                 else {
                     wt.setText(getResources().getString(R.string.tie_text));
                 }
+                updateScore();
             }
         });
-
-
     }
 
     public Weapon startMatch(Weapon pw){
@@ -122,5 +117,4 @@ public class MainActivity extends AppCompatActivity {
         TextView score_text = binding.scoreText;
         score_text.setText(getResources().getString(R.string.score_text, playerScore, comScore));
     }
-
 }

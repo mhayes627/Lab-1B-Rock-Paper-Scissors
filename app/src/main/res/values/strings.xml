@@ -9,6 +9,6 @@
     <string name="player_win">Player wins: %1$s</string>
     <string name="com_win">Computer wins: %1$s</string>
     <string name="rock_win">Rock beats scissors!</string>
-    <string name="paper_win">Paper beats rock!</string>
+    <string name="paper_win">Paper covers rock!</string>
     <string name="scissors_win">Scissors cuts paper!</string>
 </resources>
