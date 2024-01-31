@@ -17,9 +17,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
     int playerScore = 0;
     int comScore = 0;
-    String comChoice;
-    String playerChoice;
     Random rand = new Random();
+    Weapon playerWeapon, comWeapon;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,46 +36,91 @@ public class MainActivity extends AppCompatActivity {
         TextView st = binding.scissorsButton;
         st.setText(Weapon.SCISSORS.toString());
 
-        TextView score = binding.scoreText;
-        score.setText(getResources().getString(R.string.score_text, playerScore, comScore));
+        TextView wt = binding.winText;
+
+        String rockWin = getResources().getString(R.string.rock_win);
+        String paperWin = getResources().getString(R.string.paper_win);
+        String scissorsWin = getResources().getString(R.string.scissors_win);
 
         binding.rockButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerChoice = binding.rockButton.getText().toString();
-                startMatch(playerChoice);
+                playerWeapon = Weapon.ROCK;
+                comWeapon = startMatch(playerWeapon);
+
+                if (comWeapon.equals(Weapon.SCISSORS)){
+                    wt.setText(getResources().getString(R.string.player_win, rockWin));
+                    playerScore++;
+                    updateScore();
+                }
+                else if (comWeapon.equals(Weapon.PAPER)){
+                    wt.setText(getResources().getString(R.string.com_win, paperWin));
+                    comScore++;
+                    updateScore();
+                }
+                else {
+                    wt.setText(getResources().getString(R.string.tie_text));
+                }
             }
         });
         binding.paperButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerChoice = binding.paperButton.getText().toString();
-                startMatch(playerChoice);
+                playerWeapon = Weapon.PAPER;
+                comWeapon = startMatch(playerWeapon);
+
+                if (comWeapon.equals(Weapon.SCISSORS)){
+                    wt.setText(getResources().getString(R.string.com_win, scissorsWin));
+                    comScore++;
+                    updateScore();
+                }
+                else if (comWeapon.equals(Weapon.ROCK)){
+                    wt.setText(getResources().getString(R.string.player_win, paperWin));
+                    playerScore++;
+                    updateScore();
+                }
+                else {
+                    wt.setText(getResources().getString(R.string.tie_text));
+                }
             }
         });
         binding.scissorsButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                playerChoice = binding.scissorsButton.getText().toString();
-                startMatch(playerChoice);
+                playerWeapon = Weapon.SCISSORS;
+                comWeapon = startMatch(playerWeapon);
 
+                if (comWeapon.equals(Weapon.ROCK)){
+                    wt.setText(getResources().getString(R.string.com_win, rockWin));
+                    comScore++;
+                    updateScore();
+                }
+                else if (comWeapon.equals(Weapon.PAPER)){
+                    wt.setText(getResources().getString(R.string.player_win, scissorsWin));
+                    playerScore++;
+                    updateScore();
+                }
+                else {
+                    wt.setText(getResources().getString(R.string.tie_text));
+                }
             }
         });
 
 
     }
 
-    public void startMatch(String pc){
-        binding.pweaponText.setText(pc);
+    public Weapon startMatch(Weapon pw){
+        binding.pweaponText.setText(getResources().getString(R.string.pChoice_text, pw.toString()));
         int weapon = rand.nextInt(Weapon.values().length);
-        comChoice = Weapon.values()[weapon].toString();
+        comWeapon = Weapon.values()[weapon];
+        binding.cweaponText.setText(getResources().getString(R.string.comChoice_text, comWeapon.toString()));
 
-        TextView cWeaponText = binding.cweaponText;
-        cWeaponText.setText(comChoice);
+        return comWeapon;
+    }
 
-        TextView wt = binding.winText;
-
-
+    public void updateScore(){
+        TextView score_text = binding.scoreText;
+        score_text.setText(getResources().getString(R.string.score_text, playerScore, comScore));
     }
 
 }
